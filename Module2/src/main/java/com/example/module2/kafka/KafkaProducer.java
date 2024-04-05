@@ -10,15 +10,14 @@ public class KafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaProducer.class);
 
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private static KafkaTemplate<String, String> kafkaTemplate;
 
     public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
+        KafkaProducer.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(String message) {
+    public static void sendMessage(String message) {
         LOGGER.info(String.format("Message was sent to HappyTopic successfully -> %s", message));
         kafkaTemplate.send("HappyTopic", message);
     }
-
 }

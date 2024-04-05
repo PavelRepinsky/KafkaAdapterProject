@@ -1,7 +1,6 @@
 package com.example.module1.controller;
 
 import com.example.module1.kafka.JsonKafkaProducer;
-import com.example.module1.payload.JsonURL;
 import org.example.payload.JsonUrl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

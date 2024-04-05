@@ -1,6 +1,5 @@
 package com.example.module1.kafka;
 
-import com.example.module1.payload.JsonURL;
 import org.example.payload.JsonUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +14,9 @@ public class JsonKafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
-    private KafkaTemplate<String, JsonURL> kafkaTemplate;
+    private KafkaTemplate<String, JsonUrl> kafkaTemplate;
 
-    public JsonKafkaProducer(KafkaTemplate<String, JsonURL> kafkaTemplate) {
+    public JsonKafkaProducer(KafkaTemplate<String, JsonUrl> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
