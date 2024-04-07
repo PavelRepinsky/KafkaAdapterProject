@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Village Library welcoming you!</title>
+</head>
+<body>
+  <h1>Let's create a JSON to find out the books that the Village Library has</h1>
+    <!--/*@thymesVar id="JsonUrl" type="org.example.payload.JsonUrl"*/-->
+    <form action="#" th:action="@{/library}" th:object="${library}" method="post">
+      <p>HttpMethod: <input type="text" th:field="*{httpMethod}" /></p>
+      <p>URL: <input type="text" th:field="*{url}" /></p>
+      <p>Parameters: <input type="text" th:field="*{parameters}" /></p>
+      <p><input type="submit" value="Let's look at the resulting URL" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

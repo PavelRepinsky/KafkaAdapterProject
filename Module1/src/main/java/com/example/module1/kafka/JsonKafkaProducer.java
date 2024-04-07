@@ -14,13 +14,13 @@ public class JsonKafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
-    private KafkaTemplate<String, JsonUrl> kafkaTemplate;
+    private static KafkaTemplate<String, JsonUrl> kafkaTemplate;
 
     public JsonKafkaProducer(KafkaTemplate<String, JsonUrl> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(JsonUrl jsonUrl) {
+    public static void sendMessage(JsonUrl jsonUrl) {
 
         LOGGER.info(String.format("Message was sent to LuckyTopic successfully -> %s", jsonUrl.toString()));
 
