@@ -2,10 +2,9 @@ package com.example.kafkaadapterproject.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Server {
@@ -36,5 +35,19 @@ public class Server {
 
         LOGGER.info(String.format("Response was sent -> %s", books));
         return books;
+    }
+
+    @PostMapping("/books")
+    public String sayThanks(@RequestBody(required = false) String thanks) {
+        String response;
+        if (!thanks.isEmpty()) {
+            response = "Thank You very much! Village Library does appreciate it!";
+            ResponseEntity.ok(response);
+        }
+        else {
+            response = "We will get better for you to achieve your donates!";
+            ResponseEntity.ok(response);
+        }
+        return response;
     }
 }

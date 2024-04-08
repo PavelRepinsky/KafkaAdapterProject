@@ -6,8 +6,8 @@ public class JsonUrl {
 
         private String httpMethod;
         private String url;
-        private HashMap<String, String> body;
-        private HashMap<String, String> headers;
+        private String body;
+        private String headers;
         private String parameters;
 
         @Override
@@ -37,19 +37,19 @@ public class JsonUrl {
         this.url = url;
     }
 
-    public HashMap<String, String> getBody() {
+    public String getBody() {
         return body;
     }
 
-    public void setBody(HashMap<String, String> body) {
+    public void setBody(String body) {
         this.body = body;
     }
 
-    public HashMap<String, String> getHeaders() {
+    public String getHeaders() {
         return headers;
     }
 
-    public void setHeaders(HashMap<String, String> headers) {
+    public void setHeaders(String headers) {
         this.headers = headers;
     }
 

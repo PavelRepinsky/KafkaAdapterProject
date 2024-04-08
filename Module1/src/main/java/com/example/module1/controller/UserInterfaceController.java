@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-
 @Controller
 public class UserInterfaceController {
 
@@ -24,6 +21,11 @@ public class UserInterfaceController {
     public String librarySubmit(@ModelAttribute JsonUrl jsonUrl, Model model) {
         model.addAttribute("library", jsonUrl);
         JsonKafkaProducer.sendMessage(jsonUrl);
-        return "result";
+        if (jsonUrl.getHttpMethod().equals("GET")) {
+            return "result";
+        }
+        else {
+            return  "libraryResponse";
+        }
     }
 }
