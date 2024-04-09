@@ -13,33 +13,40 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
+import java.util.List;
 
 public class CallServer {
-
-    //public static int callResult;
     public static HttpClient httpClient = HttpClient.newHttpClient();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CallServer.class);
 
 
     public static void formAndCallURL(JsonUrl jsonUrl) throws URISyntaxException, IOException, InterruptedException {
+        HttpRequest.Builder requestBuilder;
         HttpRequest request;
 
+        String headerString = jsonUrl.getHeaders();
+        String[] headerLines = headerString.split(", ");
+
         if (jsonUrl.getHttpMethod().equals("GET")) {
-            request = HttpRequest.newBuilder()
+            requestBuilder = HttpRequest.newBuilder()
                     .uri(new URI(jsonUrl.getUrl() + jsonUrl.getParameters()))
-                    .GET()
-                    .headers("Content-type", Arrays.stream(jsonUrl.getHeaders().split(", ")).findFirst().toString(),
-                            "Referer", jsonUrl.getHeaders().substring(12))
-                    .build();
+                    .GET();
         }
         else {
-            request = HttpRequest.newBuilder()
+            requestBuilder = HttpRequest.newBuilder()
                     .uri(new URI(jsonUrl.getUrl() + jsonUrl.getParameters()))
-                    //.POST(HttpRequest.BodyPublishers.ofString((jsonUrl.getBody()))
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonUrl.getBody()))
-                    .build();
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonUrl.getBody()));
         }
+
+        for (String headerLine : headerLines) {
+            String[] headerParts = headerLine.split(": ");
+            if (headerParts.length == 2) {
+                requestBuilder.header(headerParts[0], headerParts[1]);
+            }
+        }
+
+        request = requestBuilder.build();
 
         LOGGER.info("HTTP request was performed!");
 
@@ -48,8 +55,6 @@ public class CallServer {
         System.out.println(request.headers());
         System.out.println("Response code: " + response.statusCode());
         System.out.println("Response body: " + response.body());
-
-        //callResult = response.statusCode();
 
         Message.message = response.body();
 

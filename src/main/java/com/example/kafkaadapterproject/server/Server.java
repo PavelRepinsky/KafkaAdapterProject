@@ -2,6 +2,9 @@ package com.example.kafkaadapterproject.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Server {
 
+    final Logger LOGGER = LoggerFactory.getLogger(Server.class);
+
     @GetMapping("/books")
     public String books(@RequestParam(name = "author") String author) {
 
-        final Logger LOGGER = LoggerFactory.getLogger(Server.class);
 
         String books;
         if(author.equals("king")) {
@@ -38,16 +42,19 @@ public class Server {
     }
 
     @PostMapping("/books")
-    public String sayThanks(@RequestBody(required = false) String thanks) {
+    public ResponseEntity<String> sayThanks(@RequestBody(required = false) String thanks) {
         String response;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+
         if (!thanks.isEmpty()) {
             response = "Thank You very much! Village Library does appreciate it!";
-            ResponseEntity.ok(response);
         }
         else {
             response = "We will get better for you to achieve your donates!";
-            ResponseEntity.ok(response);
         }
-        return response;
+
+        LOGGER.info(String.format("Response was sent -> %s", response));
+        return new ResponseEntity<>(response, headers, HttpStatus.OK);
     }
 }
