@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Your JSON is ready! Message was sent to the Village Library!</h1>
-<p th:text="'The resulting URL: ' + ${library.httpMethod} + ' ' + ${library.url} + ${library.parameters}" />
+<p th:text="'Constructed URL: ' + ${library.httpMethod} + ' ' + ${library.url} + ${library.parameters}" />
 <a href="/library">Let's try again</a>
 </body>
 </html>
