@@ -18,6 +18,6 @@ KafkaAdapter v1.0
 Также в проекте есть сервер, который будет отвечать на вызов KafkaAdapter.
 
 UML-диаграмма:
-![photo_2024-04-11_20-02-49](https://skr.sh/sPCYs7pogRq)
+![photo_2024-04-11_20-02-49](https://github.com/PavelRepinsky/KafkaAdapterProject/assets/154328944/a973e0bb-2b5a-4a6d-af2f-9156d368f27c)
 
-[![screenshot](https://skr.sh/sPCEsquog0w)
+![image](https://github.com/PavelRepinsky/KafkaAdapterProject/assets/154328944/9019d20c-ccb0-4592-aaff-a1608d545e6a)
