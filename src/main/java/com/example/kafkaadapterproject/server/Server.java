@@ -6,7 +6,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -42,17 +41,12 @@ public class Server {
     }
 
     @PostMapping("/books")
-    public ResponseEntity<String> sayThanks(@RequestBody(required = false) String thanks) {
+    public ResponseEntity<String> sayThanks() {
         String response;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.TEXT_PLAIN);
 
-        if (!thanks.isEmpty()) {
-            response = "Thank You very much! Village Library does appreciate it!";
-        }
-        else {
-            response = "We will get better for you to achieve your donates!";
-        }
+        response = "Thank You very much! Village Library does appreciate it!";
 
         LOGGER.info(String.format("Response was sent -> %s", response));
         return new ResponseEntity<>(response, headers, HttpStatus.OK);

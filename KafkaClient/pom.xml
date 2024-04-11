@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>Module1</artifactId>
+    <artifactId>KafkaClient</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Module1</name>
     <description>Module1</description>

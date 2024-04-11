@@ -1,7 +1,5 @@
 package org.example.payload;
 
-import java.util.HashMap;
-
 public class JsonUrl {
 
         private String httpMethod;

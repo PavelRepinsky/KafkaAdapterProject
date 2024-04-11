@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Village Library - results</title>
+    <title>Village Library loves you!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Your JSON is ready!</h1>
-<p th:text="'The resulting URL: ' + ${library.httpMethod} + ' ' + ${library.url} + ${library.parameters}" />
+<h1>Village Library does appreciate your support!</h1>
+<p th:text="'Donated sum: ' + ${library.body}" />
+
 <a href="/library">Let's try again</a>
 </body>
 </html>

@@ -12,14 +12,19 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
-import java.util.List;
+
+import static com.example.module2.kafka.JsonKafkaConsumer.receivedJsonUrl;
 
 public class CallServer {
     public static HttpClient httpClient = HttpClient.newHttpClient();
-
     private static final Logger LOGGER = LoggerFactory.getLogger(CallServer.class);
 
+    public static void processJsonUrl() throws URISyntaxException, IOException, InterruptedException {
+        if (receivedJsonUrl != null) {
+            formAndCallURL(receivedJsonUrl);
+            receivedJsonUrl = null;
+        }
+    }
 
     public static void formAndCallURL(JsonUrl jsonUrl) throws URISyntaxException, IOException, InterruptedException {
         HttpRequest.Builder requestBuilder;
@@ -48,14 +53,12 @@ public class CallServer {
 
         request = requestBuilder.build();
 
-        LOGGER.info("HTTP request was performed!");
-
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
+        LOGGER.info("HTTP request was performed!");
         System.out.println(request.headers());
         System.out.println("Response code: " + response.statusCode());
         System.out.println("Response body: " + response.body());
-
         Message.message = response.body();
 
         KafkaProducer.sendMessage(Message.message);
