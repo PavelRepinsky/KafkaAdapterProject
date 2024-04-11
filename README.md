@@ -20,4 +20,4 @@ KafkaAdapter v1.0
 UML-диаграмма:
 ![photo_2024-04-11_20-02-49](https://github.com/PavelRepinsky/KafkaAdapterProject/assets/154328944/9ff1a426-caf1-4d0c-8749-f275b0bdf515)
 
-![image](https://github.com/PavelRepinsky/KafkaAdapterProject/assets/154328944/e1038c90-8e23-45f3-917c-1ecc74aa7764)
+[![image](https://github.com/PavelRepinsky/KafkaAdapterProject/assets/154328944/e1038c90-8e23-45f3-917c-1ecc74aa7764)](https://skr.sh/sPCEsquog0w)
